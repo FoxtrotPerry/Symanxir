@@ -3,7 +3,7 @@
 What is it?
 ------
 
-Symanxir is a lightweight Elixir package that aims to reduce data down to it's pure symantic meaning in a way that is helpful for both data analytics and data management.
+Symanxir is a lightweight Elixir package that aims to reduce data down to its pure symantic meaning in a way that is helpful for both data analytics and data management.
 
 Why use it?
 ------
@@ -76,7 +76,7 @@ weight = [0.25, 0.50, 0.25, 0.50, 1.00]
 Symanxir.match(list1, list2, weight)
 ```
 
-Which when ran, will return a list of match indexes accompanied with a number representing how confident the algorithm is that it found the cooresponding data row for the row in `list1` that it was looking for in `list2`. For example, the output for our example above is as follows:
+Which when run, will return a list of match indexes accompanied with a number representing how confident the algorithm is that it found the corresponding data row for the row in `list1` that it was looking for in `list2`. For example, the output for our example above is as follows:
 
 #### Output w/ weight array:
 ```elixir
@@ -96,4 +96,4 @@ In other words, we found that `["Franky","Roosevelt","Hide Park","NY","12538"]` 
 **`list1`** shared the same symantic meaning with `["Franklin","Rossevelt","Hyde Park","NY","12538"]`
 from **`list2`**.
 
-*Note the slight differences in certainty values casued by weight inclusion between the two outputs.*
+*Note the slight differences in certainty values caused by weight inclusion between the two outputs.*
