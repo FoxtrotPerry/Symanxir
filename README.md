@@ -76,7 +76,7 @@ weight = [0.25, 0.50, 0.25, 0.50, 1.00]
 Symanxir.match(list1, list2, weight)
 ```
 
-Which when ran, will return a list of matches accompanied with a number representing how confident the algorithm is that it found the cooresponding data row for the row in `list1` that it was looking for in `list2`. For example, the output for our example above is as follows:
+Which when ran, will return a list of match indexes accompanied with a number representing how confident the algorithm is that it found the cooresponding data row for the row in `list1` that it was looking for in `list2`. For example, the output for our example above is as follows:
 
 #### Output w/ weight array:
 ```elixir
@@ -89,4 +89,11 @@ Which when ran, will return a list of matches accompanied with a number represen
 [[2, 93.4259259259], [0, 95.1111111111], [1, 97.3333333333]]
 ```
 
-*Note the slight differences in certainty values*
+So in both of these cases, we can see that Symanxir found a match for the first
+row in `list1` at index `2` in `list2`.
+
+In other words, we found that `["Franky","Roosevelt","Hide Park","NY","12538"]` from 
+**`list1`** shared the same symantic meaning with `["Franklin","Rossevelt","Hyde Park","NY","12538"]`
+from **`list2`**.
+
+*Note the slight differences in certainty values casued by weight inclusion between the two outputs.*
