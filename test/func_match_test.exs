@@ -50,6 +50,7 @@ defmodule SymanxirTest do
 
   test "certainty scores are as expected with weight", context do
     resp = Symanxir.match(context[:elem1],context[:elem2],context[:weight])
+    IO.puts "Weight was given for this test..."
     assert resp == [
       [4, 100.0],
       [0, 100.0],

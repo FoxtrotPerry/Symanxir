@@ -1,12 +1,7 @@
 defmodule Symanxir do # Peep dis https://i.imgur.com/OKpFa15.jpg
   def match(elem1, elem2, weight \\ [], opts \\ :default) do #(list,list,list,atom)
 
-    if(Enum.empty?(weight)) do
-      warn("Weight list not given, calculating standard weight...")
-      weight = Enum.reduce(Enum.at(elem1,0),[],fn(x,acc) ->
-        acc ++ [Float.round(1/(length(Enum.at(elem1,0))),8)]
-      end)
-    end
+    weight = weight_check(weight,elem1)
 
     d_check = datacheck(elem1,elem2,weight,opts)
     if(d_check == :ok) do
@@ -14,6 +9,8 @@ defmodule Symanxir do # Peep dis https://i.imgur.com/OKpFa15.jpg
       weight_tot = Enum.reduce(weight, 0.0, fn(x,acc) ->
         acc = acc + x
       end)
+
+      IO.inspect weight, label: "Weight at first loop"
 
       match_list = Enum.reduce(elem1,[], fn(x,acc) -> # x = next elem from elem1
 
@@ -76,7 +73,19 @@ defmodule Symanxir do # Peep dis https://i.imgur.com/OKpFa15.jpg
 
 
 
-
+  defp weight_check(weight_list,elem1) do
+    return_weight_list =
+      case weight_list do
+        [] ->
+          warn("Weight list not given or is empty, calculating standard weight...")
+          Enum.reduce(Enum.at(elem1,0),[],fn(x,acc) ->
+            acc ++ [Float.round(1/(length(Enum.at(elem1,0))),8)]
+          end)
+        _ -> weight_list
+      end
+    IO.inspect return_weight_list, label: "Weight List"
+    return_weight_list
+  end
 
   defp error(string) do
     safe_string = Kernel.inspect(string)
